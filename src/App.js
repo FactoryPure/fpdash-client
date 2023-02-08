@@ -1,24 +1,65 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+import LayoutLogin from './layout/LayoutLogin';
+import { Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { setUser } from './redux/user';
+import { useDispatch, useSelector } from 'react-redux';
+import Router from './routes/Router';
+import Layout from './layout/Layout';
+import SUBMENUS from './routes/submenus';
 
 function App() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { user } = useSelector(state => state)
+  const sessionToken = sessionStorage.getItem("session_token")
+  const location = useLocation()
+  const currentLocation = location.pathname.split("/")[1].replaceAll("-", " ")
+  useEffect(() => {
+    if (sessionToken) {
+      fetch("http://localhost:8080/users/verify", {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: sessionToken
+        }      
+      }).then(res => res.json()).then(res => {
+        if (res.success) {
+          sessionStorage.setItem("session_token", res.token)
+          dispatch(setUser({
+            firstName: res.first_name,
+            lastName: res.last_name,
+            email: res.email,
+            access: JSON.parse(res.access)
+          }))
+        } else {
+          navigate("/login")
+        }
+      }).catch(err => {
+        navigate("/login")
+      })
+    } else if (location.pathname !== "/create") {
+      navigate("/login")
+    }
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {(location.pathname === "/create" || location.pathname === "/login") ? (
+        <LayoutLogin>
+          <Router />
+        </LayoutLogin>
+      )
+      :
+      (
+        <>
+          {user && 
+            <Layout title={currentLocation} access={user.access} submenu={SUBMENUS[currentLocation]}>
+              <Router />
+            </Layout>
+          }
+        </>
+      )
+      } 
+    </>
   );
 }
 
