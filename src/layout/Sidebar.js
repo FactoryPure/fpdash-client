@@ -10,22 +10,10 @@ export default function Sidebar({ access, submenu }) {
         "shipping",
         "sales",
         "calls",
-        "users"
+        "users",
+        "admin"
     ]
     const currentList = access.includes("*") ? DEFAULT_LIST : access
-    const data = useSelector(getData)
-    const handleRefresh = () => {
-        const confirm = window.confirm("Are you sure? This can take up to ten minutes.")
-        if (confirm) {
-            fetch("https://www.fp-development.com/sync/products", {
-                headers: {
-                    Authorization: "PleaseLetMeDoThisUpdatePrettyPrettyPleaseManINeedThisOne"
-                }
-            }).then(res => res.json()).then(res => {
-                alert(res.message)
-            }).catch(console.log)
-        }
-    }
     return (
         <div className="sidebar">
             <div 

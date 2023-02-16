@@ -17,7 +17,7 @@ function App() {
   const currentLocation = location.pathname.split("/")[1].replaceAll("-", " ")
   useEffect(() => {
     if (sessionToken) {
-      fetch("http://localhost:8080/users/verify", {
+      fetch("https://api.fpdash.com/users/verify", {
         headers: {
           'Content-Type': 'application/json',
           Authorization: sessionToken
@@ -29,6 +29,7 @@ function App() {
             firstName: res.first_name,
             lastName: res.last_name,
             email: res.email,
+            type: res.type,
             access: JSON.parse(res.access)
           }))
         } else {

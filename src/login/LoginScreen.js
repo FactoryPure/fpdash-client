@@ -12,7 +12,7 @@ export default function LoginScreen() {
         e.preventDefault()
         const email = e.target.email.value
         const password = e.target.password.value
-        fetch("http://localhost:8080/users/login", {
+        fetch("https://api.fpdash.com/users/login", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -22,20 +22,22 @@ export default function LoginScreen() {
                 password
             })
         }).then(res => res.json()).then((res) => {
+            console.log(res)
             if (res.success) {
                 sessionStorage.setItem("session_token", res.token)
                 dispatch(setUser({
                     firstName: res.first_name,
                     lastName: res.last_name,
                     email: res.email,
+                    type: res.type,
                     access: JSON.parse(res.access)
                 }))
                 navigate("/home")
-
             } else {
                 alert("LOGIN FAILED")
             }
         }).catch(err => {
+            console.log(err)
             alert("LOGIN FAILED")
         })
     }
@@ -77,6 +79,9 @@ export default function LoginScreen() {
                         z-index: -1;
                         mix-blend-mode: color-burn;
                         pointer-events: none;
+                    }
+                    .topbar {
+                        background: transparent !important;
                     }
                 `}
             </style>

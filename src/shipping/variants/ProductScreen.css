@@ -1,0 +1,103 @@
+.products__product {
+    display: flex;
+    gap: 32px;
+    padding: 16px;
+    margin: 16px auto;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+    position: relative;
+    transition: all 0.3s;
+    cursor: pointer;
+    padding-right: 100px;
+}
+.products__product__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #4a4a4a;
+}
+.products__product__title {
+    width: 200px;
+}
+.products__product__active__row {
+    display: flex;
+    gap: 16px;
+}
+.products__product:hover {
+    background-color: rgba(0, 100, 160, 0.1)
+}
+.products__product::after {
+    content: 'EDIT';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    padding: 8px 16px;
+    background: rgb(0,60,90);
+    transform: translateY(-50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+}
+.products__product:hover::after {
+    opacity: 1;
+    right: 16px;
+}
+.products__product__active__main-heading {
+    font-weight: 700;
+    font-size: 14px;
+    border-bottom: 2px solid;
+    color: rgb(0, 60, 90);
+}
+.products__product__active__heading {
+    color: orange;
+    font-weight: 700;
+    font-size: 12px;
+}
+.products__product__active__item {
+    width: 400px
+}
+.products__product__message__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+.products__product__message__select-heading {
+    font-size: 16px;
+    font-weight: 700;
+}
+.products__product__message__product-title {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: #4a4a4a;
+    border-bottom: 2px solid orange;
+}
+.products__product__message__select {
+    border: 0;
+    border-bottom: 1px solid #4a4a4a;
+    margin-left: 8px;
+}
+.products__product__message {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.products__product__message__group {
+    width: 100%;
+    padding: 8px;
+    height: auto;
+    border: 1px solid #cdcdcd;
+    border-radius: 4px;
+    align-self: stretch;
+}
+.products__product__message__group__heading {
+    font-size: 12px;
+    font-weight: 700;
+    color: #4a4a4a;
+    text-transform: uppercase;
+    color: rgb(0, 60, 90);
+}

@@ -19,7 +19,7 @@ export default function SetupScreen({ setToken }) {
     }, [])
     const handleCreate = (e) => {
         e.preventDefault()
-        fetch("http://localhost:8080/users/create", {
+        fetch("https://api.fpdash.com/users/create", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -37,9 +37,13 @@ export default function SetupScreen({ setToken }) {
                     firstName: res.first_name,
                     lastName: res.last_name,
                     email: res.email,
+                    type: res.type,
                     access: JSON.parse(res.access)
                 }))
+                sessionStorage.setItem("session_token", res.token)
                 navigate("/home")
+            } else {
+                alert(res.message)
             }
         })
     }
@@ -85,6 +89,9 @@ export default function SetupScreen({ setToken }) {
                         z-index: -1;
                         mix-blend-mode: color-burn;
                         pointer-events: none;
+                    }
+                    .topbar {
+                        background: transparent !important;
                     }
                 `}
             </style>
