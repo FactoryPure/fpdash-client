@@ -38,8 +38,10 @@ export default function AdminScreen() {
     }
     return (
         <div className="admin">
-            <button className="admin__reset-products" onClick={handleRefreshCollectionProducts}>REFRESH PRODUCTS</button>
-            <button className="admin__reset-products" onClick={handleSyncMessages}>REFRESH MESSAGES</button>
+            <p style={{fontSize: '20px'}}>Collection pages / compare app not reflecting updated product info?</p>
+            <button style={{marginBottom: '16px'}} className="admin__reset-products" onClick={handleRefreshCollectionProducts}>REFRESH PRODUCTS</button>
+            <p style={{fontSize: '20px'}}>New products carrying old messages?<br/><span style={{fontSize: "14px", display: 'inline-block', fontWeight: 700, lineHeight: '18px', textTransform: 'uppercase'}}>This may trigger a product refresh upon completion,<br/> please give this at least 15 minutes to complete before triggering manually.</span></p>
+            <button style={{marginBottom: '16px'}} className="admin__reset-products" onClick={handleSyncMessages}>REFRESH MESSAGES</button>
         </div>
     )
 }
