@@ -12,7 +12,7 @@ export default function LoginScreen() {
         e.preventDefault()
         const email = e.target.email.value
         const password = e.target.password.value
-        fetch("https://api.fpdash.com/users/login", {
+        fetch("http://localhost:8080/users/login", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ export default function LoginScreen() {
         if (user) {
             navigate("/home")
         }
-    })
+    }, [])
     return (
         <div className="login">
             <h1 className="login__heading">Welcome</h1>

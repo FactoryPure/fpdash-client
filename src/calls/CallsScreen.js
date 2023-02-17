@@ -10,7 +10,7 @@ export default function CallsScreen() {
         if (!user.access.includes("calls") && !user.access.includes("*")) {
             navigate("/home")
         }
-    })
+    }, [])
     return (
         <>
             {user && <h1>Calls</h1>}

@@ -10,7 +10,7 @@ export default function SalesScreen() {
         if (!user.access.includes("sales") && !user.access.includes("*")) {
             navigate("/home")
         }
-    })
+    }, [])
     return (
         <>
             {user &&

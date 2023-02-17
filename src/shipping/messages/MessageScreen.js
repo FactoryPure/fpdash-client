@@ -21,7 +21,7 @@ export default function MessageScreen({ mode }) {
         if (user && !user.access.includes("shipping") && !user.access.includes("*")) {
             navigate("/home")
         } else if (user && needsRefresh) {
-            fetch(`https://api.fpdash.com/shipping?group_by_message=true&include_null_values=false${mode ? `&mode=${mode}` : ''}`, {
+            fetch(`http://localhost:8080/shipping?group_by_message=true&include_null_values=false${mode ? `&mode=${mode}` : ''}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: sessionToken

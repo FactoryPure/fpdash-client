@@ -52,7 +52,7 @@ export default function CrossSellsScreen() {
         }
     }, [debouncedSearch])
     useEffect(() => {
-        fetch("https://api.fpdash.com/products?fields=title,gid,img_src", {
+        fetch("http://localhost:8080/products?fields=title,gid,img_src", {
             headers: { Authorization: sessionToken }
         }).then(res => res.json()).then(res => {
             if (res.success) {

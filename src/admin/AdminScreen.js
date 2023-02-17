@@ -27,7 +27,7 @@ export default function AdminScreen() {
     const handleSyncMessages = () => {
         const confirm = window.confirm("Are you sure? This may take a few minutes.")
         if (confirm) {
-            fetch("https://api.fpdash.com/shipping/sync", {
+            fetch("http://localhost:8080/shipping/sync", {
                 headers: {
                     Authorization: sessionToken
                 }

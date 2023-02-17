@@ -19,7 +19,7 @@ export default function SetupScreen({ setToken }) {
     }, [])
     const handleCreate = (e) => {
         e.preventDefault()
-        fetch("https://api.fpdash.com/users/create", {
+        fetch("http://localhost:8080/users/create", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

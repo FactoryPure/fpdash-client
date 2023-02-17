@@ -58,7 +58,7 @@ export default function Modal({ focus, setFocus, setNeedsRefresh }) {
 
     }
     const handleDelete = () => {
-        fetch(`https://api.fpdash.com/users/${userClone.email}`, {
+        fetch(`http://localhost:8080/users/${userClone.email}`, {
             method: "DELETE",
             headers: {
                 Authorization: sessionToken                
@@ -88,7 +88,7 @@ export default function Modal({ focus, setFocus, setNeedsRefresh }) {
         })
     }
     const handleUpdateAccess = () => {
-        fetch("https://api.fpdash.com/users/access", {
+        fetch("http://localhost:8080/users/access", {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
