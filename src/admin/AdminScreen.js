@@ -15,7 +15,7 @@ export default function AdminScreen() {
     const handleRefreshCollectionProducts = () => {
         const confirm = window.confirm("Are you sure? This can take up to ten minutes.")
         if (confirm) {
-            fetch("https://www.fp-development.com/sync/products", {
+            fetch("https://api.fp-development.com/sync/products", {
                 headers: {
                     Authorization: "PleaseLetMeDoThisUpdatePrettyPrettyPleaseManINeedThisOne"
                 }
