@@ -10,7 +10,7 @@ export default function PreviewScreen() {
     const dispatch = useDispatch()
     const handleSubmit = () => {
         setLoading(true)
-        fetch("http://localhost:8080/descriptions", {
+        fetch("https://api.fpdash.com/descriptions", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export default function PreviewScreen() {
             body: JSON.stringify(sections)
         }).then(res => res.json()).then((res) => {
             setLoading(false)
-            fetch("http://localhost:8080/descriptions/toggle", {
+            fetch("https://api.fpdash.com/descriptions/toggle", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

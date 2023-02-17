@@ -12,7 +12,7 @@ export default function LoginScreen() {
         e.preventDefault()
         const email = e.target.email.value
         const password = e.target.password.value
-        fetch("http://localhost:8080/users/login", {
+        fetch("https://api.fpdash.com/users/login", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

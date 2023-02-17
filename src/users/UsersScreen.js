@@ -27,7 +27,7 @@ export default function UsersScreen() {
         if (!user.access.includes("*")) {
             navigate("/home")
         } else if (needsRefresh) {
-            fetch("http://localhost:8080/users", {
+            fetch("https://api.fpdash.com/users", {
                 headers: {
                     Authorization: sessionToken
                 }
@@ -46,7 +46,7 @@ export default function UsersScreen() {
             return null
         }).filter(a => a)
         if (access.includes("*")) access = ["*"]
-        fetch("http://localhost:8080/users/setup", {
+        fetch("https://api.fpdash.com/users/setup", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

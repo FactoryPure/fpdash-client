@@ -12,7 +12,7 @@ export default function Modal({ focus, setFocus, setNeedsRefresh }) {
     const handleDelete = () => {
         const confirm = window.confirm("Are you sure?")
         if (confirm) {
-            fetch("http://localhost:8080/shipping/item", {
+            fetch("https://api.fpdash.com/shipping/item", {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export default function Modal({ focus, setFocus, setNeedsRefresh }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch("http://localhost:8080/shipping/item", {
+        fetch("https://api.fpdash.com/shipping/item", {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',

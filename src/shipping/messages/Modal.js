@@ -17,7 +17,7 @@ export default function Modal({ focus, setFocus, setNeedsRefresh }) {
     const handleDelete = () => {
         const confirm = window.confirm("Are you sure?")
         if (confirm) {
-            fetch("http://localhost:8080/shipping", {
+            fetch("https://api.fpdash.com/shipping", {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export default function Modal({ focus, setFocus, setNeedsRefresh }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch("http://localhost:8080/shipping", {
+        fetch("https://api.fpdash.com/shipping", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -304,7 +304,7 @@ const ProductList = ({ sessionToken, selectedItems, addToSelected }) => {
     useEffect(() => {
         const fetchAndSet = async () => {
             const promises = [
-                fetch("http://localhost:8080/collections?brands=true", {
+                fetch("https://api.fpdash.com/collections?brands=true", {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: sessionToken
@@ -314,7 +314,7 @@ const ProductList = ({ sessionToken, selectedItems, addToSelected }) => {
                         tempItems.brands = res.collections
                     }
                 }),
-                fetch("http://localhost:8080/products", {
+                fetch("https://api.fpdash.com/products", {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: sessionToken
@@ -324,7 +324,7 @@ const ProductList = ({ sessionToken, selectedItems, addToSelected }) => {
                         tempItems.products = res.products
                     }
                 }),
-                fetch("http://localhost:8080/variants", {
+                fetch("https://api.fpdash.com/variants", {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: sessionToken

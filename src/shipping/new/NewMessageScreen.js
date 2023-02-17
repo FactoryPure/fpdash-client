@@ -118,7 +118,7 @@ export default function NewMessageScreen() {
     useEffect(() => {
         const fetchAndSet = async () => {
             const promises = [
-                fetch("http://localhost:8080/collections?brands=true", {
+                fetch("https://api.fpdash.com/collections?brands=true", {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: sessionToken
@@ -128,7 +128,7 @@ export default function NewMessageScreen() {
                         tempItems.brands = res.collections
                     }
                 }),
-                fetch("http://localhost:8080/products", {
+                fetch("https://api.fpdash.com/products", {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: sessionToken
@@ -138,7 +138,7 @@ export default function NewMessageScreen() {
                         tempItems.products = res.products
                     }
                 }),
-                fetch("http://localhost:8080/variants", {
+                fetch("https://api.fpdash.com/variants", {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: sessionToken
@@ -173,7 +173,7 @@ export default function NewMessageScreen() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch("http://localhost:8080/shipping", {
+        fetch("https://api.fpdash.com/shipping", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

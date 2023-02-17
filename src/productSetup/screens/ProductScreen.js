@@ -22,7 +22,7 @@ export default function ProductScreen() {
             warranty: "",
             manuals: []
         }))
-        fetch(`http://localhost:8080/descriptions/product/${currentProduct}`, {
+        fetch(`https://api.fpdash.com/descriptions/product/${currentProduct}`, {
             headers: { Authorization: sessionToken }
         }).then(res => res.json()).then(res => {
             if (res) {
@@ -95,7 +95,7 @@ export default function ProductScreen() {
         setSettingImage(true)
         const data = new FormData()
         data.append("image", e.target.files[0], e.target.files[0].name)
-        fetch(`http://localhost:8080/removebg/${product.gid.split("/")[4]}`, {
+        fetch(`https://api.fpdash.com/removebg/${product.gid.split("/")[4]}`, {
             method: "POST",
             headers: {
                 Authorization: sessionToken

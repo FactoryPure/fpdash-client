@@ -21,7 +21,7 @@ export default function BrandsScreen() {
           if (user && !user.access.includes("shipping") && !user.access.includes("*")) {
               navigate("/home")
           } else if (user && needsRefresh) {
-              fetch(`http://localhost:8080/shipping?group_by_message=false&include_null_values=false&message_type=collection`, {
+              fetch(`https://api.fpdash.com/shipping?group_by_message=false&include_null_values=false&message_type=collection`, {
                   headers: {
                       'Content-Type': 'application/json',
                       Authorization: sessionToken
