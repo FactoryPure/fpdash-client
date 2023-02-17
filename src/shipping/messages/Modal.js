@@ -94,7 +94,6 @@ export default function Modal({ focus, setFocus, setNeedsRefresh }) {
                             <Form focus={focusClone} setFocus={setFocusClone} isEditted={isEditted} setIsEditted={setIsEditted} />
                             <div className="new-message__selected">
                                 {selectedItems && selectedItems.map(item => {
-                                    console.log(item)
                                     const classValue = item.gid.includes("Product/") ? 'new-message__option new-message__option--product' : item.gid.includes("Collection/") ? 'new-message__option new-message__option--brand' : 'new-message__option new-message__option--variants' 
                                     const type = item.gid.includes("Product/") ? 'products' : item.gid.includes("Collection/") ? 'brands' : 'variants'
                                     return (
@@ -336,7 +335,6 @@ const ProductList = ({ sessionToken, selectedItems, addToSelected }) => {
                 })
             ]
             await Promise.all(promises).then(() => {
-                console.log(tempItems)
                 setItems(tempItems)
                 setFilteredItems({
                     products: tempItems.products.slice(0, 200),

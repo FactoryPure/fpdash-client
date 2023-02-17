@@ -150,7 +150,6 @@ export default function NewMessageScreen() {
                 })
             ]
             await Promise.all(promises).then(() => {
-                console.log(tempItems)
                 setItems(tempItems)
                 setFilteredItems(tempItems)
             })
@@ -293,7 +292,6 @@ export default function NewMessageScreen() {
                 </form>
                 <div className="new-message__selected">
                     {selectedItems.map(item => {
-                        console.log(item)
                         const classValue = item.type === "products" ? 'new-message__option new-message__option--product' : item.type === "brands" ? 'new-message__option new-message__option--brand' : 'new-message__option new-message__option--variants' 
                         return (
                             <div className={classValue} onClick={() => removeFromSelected(item)}>

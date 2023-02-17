@@ -55,7 +55,6 @@ export default function Modal({ focus, setFocus, setNeedsRefresh }) {
         })
     }
     useEffect(() => {
-        console.log(focus)
         if (focus.message_id) {
             setShowModal(true)
             setSelectedMessage(focus.activeMessage.message_id)

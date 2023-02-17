@@ -22,7 +22,6 @@ export default function LoginScreen() {
                 password
             })
         }).then(res => res.json()).then((res) => {
-            console.log(res)
             if (res.success) {
                 sessionStorage.setItem("session_token", res.token)
                 dispatch(setUser({

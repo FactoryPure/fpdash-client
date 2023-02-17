@@ -27,7 +27,7 @@ export default function PreviewScreen() {
                     gid: sections.product.gid,
                     version: "new"
                 })
-            }).then(res => res.json()).then(console.log).catch(console.log)
+            }).catch(console.log)
             if (res.success) {
                 setSuccessfulUpload("true")
                 dispatch(setSections({

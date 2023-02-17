@@ -83,8 +83,6 @@ export default function CrossSellsScreen() {
                                             {match.title}
                                         </div>
                                     )
-                                } else {
-                                    console.log(p)
                                 }
                             })}
                         </div>

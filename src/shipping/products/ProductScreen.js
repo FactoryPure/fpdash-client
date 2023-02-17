@@ -56,15 +56,12 @@ export default function ProductsScreen() {
         let matches = 0
         let variantTitleMatches = 0
         for (let word of titleArray) {
-          console.log(searchMap, word)
             if (searchMap[word] === 1) {
                 matches++
-                console.log(matches)
                 searchMap[word] = 0
             }
         }
         if (variantTitleArray.length > 0) {
-          console.log(variantTitleArray)
             for (let word of variantTitleArray) {
                 if (variantSearchMap[word] === 1) {
                     variantTitleMatches++
@@ -72,7 +69,6 @@ export default function ProductsScreen() {
                 }
             }
         }
-        console.log(matches, Object.keys(searchMap).length)
         if (matches === Object.keys(searchMap).length) {
             return true
         } else if (variantTitleMatches === Object.keys(searchMap).length) {
