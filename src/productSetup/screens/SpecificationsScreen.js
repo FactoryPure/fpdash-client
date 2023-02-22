@@ -87,7 +87,7 @@ export default function ProductScreen() {
                             <table className="pdp__specs__row__left__table">
                                 <tbody className="pdp__specs__row__left__table__tbody">
                                     {specifications.left && specifications.left.map(s => {
-                                        const cells = s.split("::")
+                                        const cells = s.includes("::") ? s.split("::") : s.split(":")
                                         let heading = false
                                         if (cells.length === 1) {
                                             cells.push("")
@@ -111,7 +111,7 @@ export default function ProductScreen() {
                             <table className="pdp__specs__row__right__table">
                                 <tbody className="pdp__specs__row__right__table__tbody">
                                     {specifications.right && specifications.right.map(s => {
-                                        const cells = s.split("::")
+                                        const cells = s.includes("::") ? s.split("::") : s.split(":")
                                         let heading = false
                                         if (cells.length === 1) {
                                             cells.push("")
