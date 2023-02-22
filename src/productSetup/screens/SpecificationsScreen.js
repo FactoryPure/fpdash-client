@@ -22,7 +22,7 @@ export default function ProductScreen() {
                 const cell1 = cells[i].replaceAll("\t", " ").trim()
                 const cell2 = cells[i + 1].replaceAll("\t", " ").trim()
                 const currentRow = [cell1, cell2].filter(c => c.length)
-                result.push(currentRow.join(":"))
+                result.push(currentRow.join("::"))
             }
             dispatch(setSections({specifications: {...specifications, left: result}}))
         } else {
@@ -34,7 +34,7 @@ export default function ProductScreen() {
                 const cell1 = cells[i].replaceAll("\t", " ").trim()
                 const cell2 = cells[i + 1].replaceAll("\t", " ").trim()
                 const currentRow = [cell1, cell2].filter(c => c.length)
-                result.push(currentRow.join(":"))
+                result.push(currentRow.join("::"))
             }
             dispatch(setSections({specifications: {...specifications, right: result}}))
         }
@@ -42,14 +42,14 @@ export default function ProductScreen() {
     useEffect(() => {
         if (specifications) {
             setSpecTextLeft(specifications.left.map(spec => {
-                const cells = spec.split(":")
+                const cells = spec.includes("::") ? spec.split("::") : spec.split(":")
                 if (cells.length == 1) {
                     return cells[0] + "\n"
                 }
                 return cells.join("\n")
             }).join("\n"))
             setSpecTextRight(specifications.right.map(spec => {
-                const cells = spec.split(":")
+                const cells = spec.includes("::") ? spec.split("::") : spec.split(":")
                 if (cells.length == 1) {
                     return cells[0] + "\n"
                 }
@@ -87,7 +87,7 @@ export default function ProductScreen() {
                             <table className="pdp__specs__row__left__table">
                                 <tbody className="pdp__specs__row__left__table__tbody">
                                     {specifications.left && specifications.left.map(s => {
-                                        const cells = s.split(":")
+                                        const cells = s.split("::")
                                         let heading = false
                                         if (cells.length === 1) {
                                             cells.push("")
@@ -111,7 +111,7 @@ export default function ProductScreen() {
                             <table className="pdp__specs__row__right__table">
                                 <tbody className="pdp__specs__row__right__table__tbody">
                                     {specifications.right && specifications.right.map(s => {
-                                        const cells = s.split(":")
+                                        const cells = s.split("::")
                                         let heading = false
                                         if (cells.length === 1) {
                                             cells.push("")
