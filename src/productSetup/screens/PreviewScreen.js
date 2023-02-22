@@ -128,7 +128,7 @@ export default function PreviewScreen() {
                                 <table className="pdp__specs__row__left__table">
                                     <tbody className="pdp__specs__row__left__table__tbody">
                                         {sections.specifications.left && sections.specifications.left.map(s => {
-                                            const cells = s.split("::")
+                                            const cells = s.includes("::") ? s.split("::") : s.split(":")
                                             let heading = false
                                             if (cells.length === 1) {
                                                 cells.push("")
@@ -152,7 +152,7 @@ export default function PreviewScreen() {
                                 {sections.specifications.right.length > 0 && <table className="pdp__specs__row__right__table">
                                     <tbody className="pdp__specs__row__right__table__tbody">
                                         {sections.specifications.right && sections.specifications.right.map(s => {
-                                            const cells = s.split("::")
+                                            const cells = s.includes("::") ? s.split("::") : s.split(":")
                                             let heading = false
                                             if (cells.length === 1) {
                                                 cells.push("")
