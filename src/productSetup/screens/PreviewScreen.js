@@ -18,17 +18,17 @@ export default function PreviewScreen() {
             body: JSON.stringify(sections)
         }).then(res => res.json()).then((res) => {
             setLoading(false)
-            fetch("https://api.fpdash.com/descriptions/toggle", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    gid: sections.product.gid,
-                    version: "new"
-                })
-            }).catch(console.log)
             if (res.success) {
+                fetch("https://api.fpdash.com/descriptions/toggle", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        gid: sections.product.gid,
+                        version: "new"
+                    })
+                }).catch(console.log)
                 setSuccessfulUpload("true")
                 dispatch(setSections({
                     product: "",
@@ -223,7 +223,7 @@ export default function PreviewScreen() {
                 </div>
             </section>}
         </div>
-        {successfulUpload === "pending" ? <h2 style={{marginBottom: '16px', marginTop: '32px'}}>Looks good?</h2> : successfulUpload === "true" ? <h2 style={{marginBottom: '16px', marginTop: '32px'}}>Successfully Updated Product!</h2> : <h2 style={{marginBottom: '16px', marginTop: '32px'}}>Updated failed</h2>}
+        {successfulUpload === "pending" ? <h2 style={{marginBottom: '16px', marginTop: '32px'}}>Looks good?</h2> : successfulUpload === "true" ? <h2 style={{marginBottom: '16px', marginTop: '32px'}}>Successfully Updated Product!</h2> : <h2 style={{marginBottom: '16px', marginTop: '32px'}}>Update failed</h2>}
             {loading && (
                 <svg style={{width: '100px', height: '100px'}} version="1.1" id="L2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                     viewBox="0 0 100 100" enable-background="new 0 0 100 100">

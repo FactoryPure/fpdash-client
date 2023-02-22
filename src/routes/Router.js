@@ -7,6 +7,7 @@ import LayoutLogin from "../layout/LayoutLogin";
 import LoginScreen from "../login/LoginScreen";
 import ProductSetup from "../productSetup/ProductSetup";
 import SalesScreen from "../sales/SalesScreen";
+import ScrapeScreen from "../scrape/ScrapeScreen";
 import SetupScreen from "../setup/SetupScreen";
 import BrandsScreen from "../shipping/brands/BrandsScreen";
 import MessageScreen from "../shipping/messages/MessageScreen";
@@ -38,7 +39,8 @@ export default function Router() {
         <Route path={"/sales"} element={<SalesScreen />} />,
         <Route path={"/calls"} element={<CallsScreen />} />,
         <Route path={"/users"} element={<UsersScreen />} />,
-        <Route path={"/admin"} element={<AdminScreen />} />
+        <Route path={"/admin"} element={<AdminScreen />} />,
+        <Route path={"/scrape"} element={<ScrapeScreen />} />
     ]
     return (
         <>
