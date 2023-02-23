@@ -1,0 +1,28 @@
+.scrape__card {
+    margin: 16px 0;
+    padding: 32px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.25);
+}
+.scrape__card__title {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 300;
+    color: #4a4a4a;
+    margin-bottom: 12px;
+    border-bottom: 1px solid;
+}
+.scrape__card__sku {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+    color: #4a4a4a;
+}
+.scrape__card__price {
+    color: rgb(81, 185, 12);
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+.scrape__card__competitor {
+    margin-left: 16px;
+}

@@ -6,7 +6,8 @@ const DEFAULT_LIST_MAP = {
     "shipping": false,
     "sales": false,
     "calls": false,
-    "users": false
+    "users": false,
+    "scrape": false
 }
 
 export default function Modal({ focus, setFocus, setNeedsRefresh }) {

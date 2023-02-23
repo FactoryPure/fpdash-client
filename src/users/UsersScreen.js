@@ -11,7 +11,8 @@ const DEFAULT_LIST = [
     "shipping",
     "sales",
     "calls",
-    "users"
+    "users",
+    "scrape"
 ]
 export default function UsersScreen() {
     const [search, setSearch] = useState("")

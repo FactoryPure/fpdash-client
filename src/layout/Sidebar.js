@@ -11,7 +11,8 @@ export default function Sidebar({ access, submenu }) {
         "sales",
         "calls",
         "users",
-        "admin"
+        "admin",
+        "scrape"
     ]
     const currentList = access.includes("*") ? DEFAULT_LIST : access
     return (
