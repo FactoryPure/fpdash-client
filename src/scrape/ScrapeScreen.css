@@ -26,3 +26,9 @@
 .scrape__card__competitor {
     margin-left: 16px;
 }
+.scrape__link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

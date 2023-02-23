@@ -12,6 +12,7 @@ export default function ScrapeScreen() {
                         resultsMap[result.sku] = {
                             title: result.title,
                             sku: result.sku,
+                            sku_vendor: result.sku_vendor,
                             fpPrice: null,
                             competitors: []
                         }
@@ -39,12 +40,20 @@ export default function ScrapeScreen() {
             }
         })
     }, [])
+    const LinkOut = () => {
+        return (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#4a4a4a" width="24px" height="24px" viewBox="0 0 32 32"><path d="M23.5 23.5h-15v-15h4.791V6H6v20h20v-7.969h-2.5z"/><path d="M17.979 6l3.016 3.018-6.829 6.829 1.988 1.987 6.83-6.828L26 14.02V6z"/></svg>
+        )
+    }
     return (
         <>
             {
             results.map(r => (
                     <div className="scrape__card">
-                        <p className="scrape__card__sku">{r.sku}</p>
+                        <a className="scrape__link" href={`https://www.google.com/search?q=${r.sku_vendor && r.sku_vendor.split(" - ")[0].split(" ").join("+")}&tbm=shop&tbs=new:1&gl=us`} target="_blank">
+                            <p className="scrape__card__sku">{r.sku}</p>
+                            <LinkOut />
+                        </a>
                         <p className="scrape__card__title">{r.title}</p>
                         <p className="scrape__card__price">FP Price: {r.fpPrice ? `$${r.fpPrice.toFixed(2)}` : 'NOT PRESENT'}</p>
                         {r.competitors.map(c => <p className="scrape__card__competitor">{c.vendor} - {c.price ? `$${c.price.toFixed(2)}` : 'NOT PRESENT'}</p>)}
