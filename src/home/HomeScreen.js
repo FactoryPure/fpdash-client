@@ -7,15 +7,21 @@ import Chart from 'chart.js/auto'
 export default function HomeScreen() {
     const { user } = useSelector(state => state)
     const sessionToken = sessionStorage.getItem("session_token")
-    const [salesToday, setSalesToday] = useState([])
+    const [salesToday, setSalesToday] = useState(0)
+    const [totalOrders, setTotalOrders] = useState(0)
     const chart = useRef(null)
     useEffect(() => {
-        fetch("https://api.fpdash.com/analytics/sales/today", {
+        fetch("http://localhost:8080/analytics/sales/today", {
             headers: {
                 Authorization: sessionToken
             }
         }).then(res => res.json()).then(res => {
             if (res.success) {
+                console.log(res.sales)
+                setSalesToday(res.sales.reduce((acc, curr) => {
+                    return acc + parseFloat(curr.total)
+                }, 0))
+                setTotalOrders(res.sales.length)
                 const salesPerHour = {
                     0:0,
                     1:0,
@@ -51,17 +57,38 @@ export default function HomeScreen() {
                     data: {
                       labels: Object.keys(salesPerHour),
                       datasets: [{
-                        label: 'Sales per hour',
                         data: Object.values(salesPerHour),
-                        borderWidth: 1
+                        borderWidth: 0,
+                        backgroundColor: Object.values(salesPerHour).map(v => `rgba(${Math.max(173, 50 + (v / 1000) * 5)}, ${216 - (v / 1000) * 7}, ${Math.max(230, 50 + (v / 1000) * 10)}, 0.75)`)
                       }]
                     },
                     options: {
-                      scales: {
-                        y: {
-                          beginAtZero: true
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: "Moneys",
+                                    font: {
+                                        size: 15
+                                    }
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: "Hour",
+                                    font: {
+                                        size: 15
+                                    }
+                                }
+                            }
                         }
-                      }
                     }
                   });
             }
@@ -71,7 +98,9 @@ export default function HomeScreen() {
         <>
             {user && <>
                     <h1>Welcome, {user.firstName}</h1>
-                    <canvas ref={chart}></canvas>
+                    <p style={{textAlign: 'center', fontWeight: 'bold', fontSize: '20px'}}>Today's Orders</p>
+                    <p style={{textAlign: 'center'}}>${salesToday.toFixed(2)} - {totalOrders} Orders</p>
+                    <canvas style={{ maxHeight: '300px' }} ref={chart}></canvas>
             </>}
         </>
     )
