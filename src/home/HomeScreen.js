@@ -11,7 +11,7 @@ export default function HomeScreen() {
     const [totalOrders, setTotalOrders] = useState(0)
     const chart = useRef(null)
     useEffect(() => {
-        fetch("http://localhost:8080/analytics/sales/today", {
+        fetch("https://api.fpdash.com/analytics/sales/today", {
             headers: {
                 Authorization: sessionToken
             }
