@@ -35,7 +35,6 @@ export default function ScrapeScreen() {
                 const sortedResult = Object.entries(resultsMap).sort((a, b) => {
                     return a[1].competitors.length > b[1].competitors.length ? -1 : 1
                 })
-                console.log(sortedResult)
                 setResults(sortedResult.map(r => r[1]))
             }
         })

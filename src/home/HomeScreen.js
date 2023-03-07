@@ -17,7 +17,6 @@ export default function HomeScreen() {
             }
         }).then(res => res.json()).then(res => {
             if (res.success) {
-                console.log(res.sales)
                 setSalesToday(res.sales.reduce((acc, curr) => {
                     return acc + parseFloat(curr.total)
                 }, 0))

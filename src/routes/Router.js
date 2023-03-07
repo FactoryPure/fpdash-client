@@ -14,6 +14,8 @@ import MessageScreen from "../shipping/messages/MessageScreen";
 import NewMessageScreen from "../shipping/new/NewMessageScreen";
 import ProductsScreen from "../shipping/products/ProductScreen";
 import VariantsScreen from "../shipping/variants/VariantsScreen";
+import CreateTaskScreen from "../tasks/new/CreateTaskScreen";
+import TasksScreen from "../tasks/schedule/TasksScreen";
 import UsersScreen from "../users/UsersScreen";
 
 export default function Router() {
@@ -36,6 +38,11 @@ export default function Router() {
         <Route path="create" element={<SetupScreen />} />,
         <Route path={"/login"} element={<LoginScreen />} />,
         <Route path={"/product-setup"} element={<ProductSetup />} />,
+        <Route path="tasks">
+            <Route index={true} element={<Navigate to={"/tasks/all"} />} />,
+            <Route path={"all"} element={<TasksScreen />} />,
+            <Route path={"new"} element={<CreateTaskScreen />} />,
+        </Route>,
         <Route path={"/sales"} element={<SalesScreen />} />,
         <Route path={"/calls"} element={<CallsScreen />} />,
         <Route path={"/users"} element={<UsersScreen />} />,

@@ -7,6 +7,10 @@ const SUBMENUS = {
         "products",
         "brands",
         "variants"
+    ],
+    tasks: [
+        "new",
+        "all"
     ]
 }
 export default SUBMENUS

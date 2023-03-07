@@ -9,6 +9,7 @@ const DEFAULT_LIST = [
     "*",
     "product-setup",
     "shipping",
+    "tasks",
     "sales",
     "calls",
     "users",

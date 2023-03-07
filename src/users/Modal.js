@@ -4,6 +4,7 @@ const DEFAULT_LIST_MAP = {
     "*": false,
     "product-setup": false,
     "shipping": false,
+    "tasks": false,
     "sales": false,
     "calls": false,
     "users": false,
